@@ -26,15 +26,28 @@ namespace Nhaama.FFXIV
 
         public ulong LocalContentId { get; private set; }
 
-        public Game(Process process, bool loadRemote = true)
+        public Game(Process process, bool loadRemote = true, string definitionFilePath = null)
         {
             Type = process.MainModule.ModuleName.Contains("ffxiv_dx11") ? GameType.Dx11 : GameType.Dx9;
             Process = process.GetNhaamaProcess();
 
             var gameDirectory = new DirectoryInfo(process.MainModule.FileName);
             Version = File.ReadAllText(Path.Combine(gameDirectory.Parent.FullName, "ffxivgame.ver"));
-            
-            Definitions = loadRemote ? Definitions.Get(Process, Version, Type) : new Definitions(Process);
+
+            if (loadRemote)
+            {
+                Definitions = Definitions.Get(Process, Version, Type);
+            }
+            else if (definitionFilePath != null)
+            {
+                var definitionJson = File.ReadAllText(definitionFilePath);
+                var serializer = Process.GetSerializer();
+                Definitions = serializer.DeserializeObject<Definitions>(definitionJson);
+            }
+            else
+            {
+                Definitions = new Definitions(Process);
+            }
 
             ActorTable = new ActorTableCollection(this);
         }
