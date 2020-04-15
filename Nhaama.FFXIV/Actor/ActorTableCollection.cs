@@ -45,6 +45,14 @@ namespace Nhaama.FFXIV.Actor
                     CompanyTag = _game.Process.ReadString(address + _game.Definitions.CompanyTag),
                     ObjectKind = (ObjectKind) _game.Process.ReadByte(address + _game.Definitions.ObjectKind),
                     SubKind = _game.Process.ReadByte(address + _game.Definitions.SubKind),
+                    StatusID = _game.Process.ReadByte(address + _game.Definitions.Status),
+                    HPCurrent = _game.Process.ReadUInt32(address + _game.Definitions.HPCurrent),
+                    HPMax = _game.Process.ReadUInt32(address + _game.Definitions.HPMax),
+                    MPCurrent = _game.Process.ReadUInt32(address + _game.Definitions.MPCurrent),
+                    GPCurrent = _game.Process.ReadUInt16(address + _game.Definitions.GPCurrent),
+                    GPMax = _game.Process.ReadUInt16(address + _game.Definitions.GPMax),
+                    CPCurrent = _game.Process.ReadUInt16(address + _game.Definitions.CPCurrent),
+                    CPMax = _game.Process.ReadUInt16(address + _game.Definitions.CPMax),
 
                     Appearance = new ActorAppearance()
                     {

@@ -15,6 +15,14 @@ namespace Nhaama.FFXIV.Actor.Model
         public byte HomeWorld { get; set; }
         public ObjectKind ObjectKind { get; set; }
         public byte SubKind { get; set; }
+        public byte StatusID { get; set; }
+        public uint HPCurrent { get; set; }
+        public uint HPMax { get; set; }
+        public uint MPCurrent { get; set; }
+        public ushort GPCurrent { get; set; }
+        public ushort GPMax { get; set; }
+        public ushort CPCurrent { get; set; }
+        public ushort CPMax { get; set; }
         public ActorAppearance Appearance { get; set; }
 
         public override string ToString()

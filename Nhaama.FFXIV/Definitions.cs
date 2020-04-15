@@ -42,6 +42,15 @@ namespace Nhaama.FFXIV
         public ulong ObjectKind = 0x8C;
         public ulong SubKind = 0x8D;
 
+        public ulong Status = 0x18D4;
+        public ulong HPCurrent = 0x1898;
+        public ulong HPMax = 0x189C;
+        public ulong MPCurrent = 0x18A0;
+        public ulong GPCurrent = 0x18AA;
+        public ulong GPMax = 0x18AC;
+        public ulong CPCurrent = 0x18AE;
+        public ulong CPMax = 0x18B0;
+
         public ulong Head = 0x15E8;
         public ulong Body = 0x15EC;
         public ulong Hands = 0x15F0;
